@@ -10,4 +10,15 @@ const sequelize = new Sequelize(
     }
 );
 
+export const connectMysql = async () => {
+    try {
+        await sequelize.authenticate();
+        await sequelize.sync({alter: true});
+        console.log('Connected to MySQL database');
+    } catch (error) {
+        console.error('Unable to connect to MySQL database:', error);
+        process.exit(1);
+    }
+};
+
 export default sequelize;
