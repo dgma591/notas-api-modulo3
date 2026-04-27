@@ -7,6 +7,7 @@ import { loggerMiddleware } from './presentation/middlewares/logger.middleware';
 import noteRoutes from './presentation/routes/note.routes';
 import {connectMongo} from './infraestructure/datebase/mongo/conection';
 import {connectMysql} from './infraestructure/datebase/mysql/conection';
+import { setupSwagger } from './infraestructure/config/swagger.config';
 
 await connectMongo();
 //await connectMysql();
@@ -14,6 +15,7 @@ await connectMongo();
 const app = express();
 app.use(cors());
 app.use(express.json());
+setupSwagger(app);
 app.use(loggerMiddleware);
 app.use(morgan('dev'));
 
