@@ -7,6 +7,7 @@ const noteSchema = new Schema({
     isPrivate: { type: Boolean, default: false },
     password: { type: String },
     userId: { type: String, required: true },
+    categoryId: { type: String, required: false },
 }, { timestamps: true });
 
 export default model('Note', noteSchema);
